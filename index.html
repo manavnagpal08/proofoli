@@ -6,10 +6,10 @@
   <title>Manav Nagpal | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">Manav Nagpal</div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -19,17 +19,19 @@
       <a href="skills.html">Skills</a>
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
-      
+      <div class="toggle-dark" onclick="toggleDarkMode()">🌙</div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Typing Animation -->
   <header class="hero-section">
     <div class="hero-content" data-aos="fade-up">
-      <h1>Turning Ideas into Impact 🚀</h1>
-      <h2>Hi, I'm <span>Manav Nagpal</span></h2>
-      <p>A Developer, Innovator & Future Data Scientist<br>
-         Crafting smart solutions with AI, Python & Passion 💡</p>
+      <h1 class="typing-text" id="typed-text"></h1>
+      <h2>I'm <span>Manav Nagpal</span></h2>
+      <p>
+        A Developer, Innovator & Future Data Scientist 💡<br />
+        Crafting impactful solutions with AI + Web Tech 🚀
+      </p>
 
       <div class="hero-buttons">
         <a href="MANAV final  Resume (1).pdf" download class="btn">📄 View Resume</a>
@@ -38,30 +40,11 @@
     </div>
   </header>
 
-  <!-- AOS + Scripts -->
+  <!-- Back to top button -->
+  <a href="#" class="back-to-top">↑</a>
+
+  <!-- AOS + Script -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    // Animate On Scroll
-    AOS.init({ duration: 1200, once: true });
-
-    // Toggle Menu
-    function toggleMenu() {
-      const nav = document.getElementById('navLinks');
-      nav.classList.toggle('open');
-    }
-
-    // Toggle Dark Mode
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-    }
-
-    // Load dark mode preference
-    window.onload = function () {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-      }
-    };
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
