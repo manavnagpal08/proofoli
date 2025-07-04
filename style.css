@@ -536,4 +536,52 @@ window.onscroll = () => {
   padding: 0 0.25rem;
   border-radius: 4px;
 }
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  position: relative;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+}
+
+.contact-form label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: #888;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.contact-form input:focus + label,
+.contact-form input:not(:placeholder-shown) + label,
+.contact-form textarea:focus + label,
+.contact-form textarea:not(:placeholder-shown) + label {
+  top: -0.7rem;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  color: #00d9ff;
+  background: #0a192f;
+  padding: 0 0.3rem;
+  border-radius: 4px;
+}
+
 
