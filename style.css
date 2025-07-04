@@ -638,4 +638,16 @@ window.onscroll = () => {
   text-align: center;
   margin-top: 2rem;
 }
+  .cert-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #00d9ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cert-card a:hover {
+  text-decoration: underline;
+}
+
 
