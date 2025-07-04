@@ -376,3 +376,43 @@ window.onscroll = () => {
   color: #000;
   font-weight: 600;
 }
+.footer {
+  margin-top: 5rem;
+  background: #0a192f;
+  text-align: center;
+  color: #ccc;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.footer-content {
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.footer a {
+  color: #00d9ff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Wave SVG Styling */
+.wave-container {
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.waves {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100px;
+}
