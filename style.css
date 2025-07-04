@@ -584,4 +584,31 @@ window.onscroll = () => {
   border-radius: 4px;
 }
 
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.cert-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #eee;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px #00d9ff;
+}
+
+.view-all-btn {
+  text-align: center;
+  margin-top: 2rem;
+}
 
