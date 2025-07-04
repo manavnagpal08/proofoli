@@ -184,3 +184,51 @@ body {
     font-size: 1rem;
   }
 }
+/* Dark Mode Toggle Button */
+.toggle-dark {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .hero-section {
+  background: radial-gradient(circle at top left, #1e1e1e, #2a2a2a);
+}
+
+body.dark-mode .navbar {
+  background: rgba(20, 20, 20, 0.95);
+}
+
+body.dark-mode .nav-links a {
+  color: #f0f0f0;
+}
+
+body.dark-mode .nav-links a:hover {
+  color: #4db8ff;
+}
+
+body.dark-mode .btn {
+  background: #4db8ff;
+}
+
+body.dark-mode .btn-outline {
+  border-color: #4db8ff;
+  color: #4db8ff;
+}
+
+body.dark-mode .btn-outline:hover {
+  background: #4db8ff;
+  color: #121212;
+}
+
+body.dark-mode .skills-grid li {
+  background: #1e1e1e;
+  color: #fff;
+  border: 1px solid #444;
+}
