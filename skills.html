@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skills | Manav Nagpal</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">Manav Nagpal</div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -22,31 +23,26 @@
     </div>
   </nav>
 
+  <!-- Skills Section -->
   <section class="section" data-aos="fade-up">
-    <h2>Skills</h2>
-    <ul class="skills-grid">
-      <li>Python</li>
-      <li>SQL</li>
-      <li>Java</li>
-      <li>PHP</li>
-      <li>Linux</li>
-      <li>Web Development</li>
-      <li>Machine Learning</li>
-      <li>Deep Learning</li>
-      <li>Android Studio</li>
-    </ul>
-  </section>
+    <h2>My Skills</h2>
 
-  <section class="section" data-aos="fade-up">
-    <h2>Certifications</h2>
-    <ul class="skills-grid">
-      <li>Python for Data Science (IBM)</li>
-      <li>Machine Learning (IBM)</li>
-      <li>ML Crash Course (Google AI)</li>
-      <li>CS50 (Harvard)</li>
-      <li>Linux (HackerEarth)</li>
-      <li>Entrepreneurship (UCI)</li>
-    </ul>
+    <div class="skill-bar">
+      <span>Python</span>
+      <div class="bar"><div class="fill" style="width: 90%">90%</div></div>
+
+      <span>Machine Learning</span>
+      <div class="bar"><div class="fill" style="width: 85%">85%</div></div>
+
+      <span>Web Development</span>
+      <div class="bar"><div class="fill" style="width: 80%">80%</div></div>
+
+      <span>SQL & Databases</span>
+      <div class="bar"><div class="fill" style="width: 75%">75%</div></div>
+
+      <span>Java & PHP</span>
+      <div class="bar"><div class="fill" style="width: 70%">70%</div></div>
+    </div>
   </section>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
