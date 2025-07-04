@@ -260,3 +260,46 @@ body.dark-mode .nav-links a:hover {
     font-size: 1rem;
   }
 }
+/* Typing effect */
+.typing-text {
+  font-size: 1.6rem;
+  color: #80dfff;
+  min-height: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Back-to-top button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  background: #00d9ff;
+  color: #000;
+  padding: 0.7rem 1rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: none;
+  z-index: 999;
+  text-align: center;
+  text-decoration: none;
+}
+
+.back-to-top:hover {
+  background: #00b8e6;
+  box-shadow: 0 0 10px #00d9ff;
+}
+
+/* Show button on scroll */
+body.scrolled .back-to-top {
+  display: block;
+}
+
+/* Activate scroll visibility */
+window.onscroll = () => {
+  if (window.scrollY > 200) {
+    document.body.classList.add('scrolled');
+  } else {
+    document.body.classList.remove('scrolled');
+  }
+};
