@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Manav Nagpal</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">Manav Nagpal</div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -22,27 +23,39 @@
     </div>
   </nav>
 
+  <!-- Projects Section -->
   <section class="section" data-aos="fade-up">
     <h2>My Projects</h2>
+    <div class="project-grid">
 
-    <div class="project">
-      <h3>Flip & Clip</h3>
-      <p>Platform for sharing content and detecting crimes using data science and security algorithms.</p>
-    </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Flip & Clip</h3>
+        <p>A content-sharing platform focused on safety and crime detection using data science.</p>
+        <span class="tag">Python</span>
+        <span class="tag">Security</span>
+      </div>
 
-    <div class="project">
-      <h3>Kraze</h3>
-      <p>Creative community platform for social sharing and expression.</p>
-    </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Kraze</h3>
+        <p>Creative content sharing platform for social connection and expression.</p>
+        <span class="tag">Python</span>
+        <span class="tag">UI/UX</span>
+      </div>
 
-    <div class="project">
-      <h3>Hotel Management System</h3>
-      <p>Python + SQL project to manage hotel tasks like booking and check-in/out processes.</p>
-    </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Hotel Management System</h3>
+        <p>Python + SQL system to automate hotel bookings, check-in, and check-out workflows.</p>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+      </div>
 
-    <div class="project">
-      <h3>Social Media Analytics for Disaster Response</h3>
-      <p>ML project to gather, analyze, and visualize disaster-related social media content in real-time.</p>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+        <h3>Social Media Analytics for Disaster Response</h3>
+        <p>ML-based app that analyzes social data during disasters for rapid decision-making.</p>
+        <span class="tag">ML</span>
+        <span class="tag">Data Science</span>
+      </div>
+
     </div>
   </section>
 
