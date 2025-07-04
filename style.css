@@ -331,3 +331,48 @@ window.onscroll = () => {
   border-radius: 30px;
   text-align: right;
 }
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #f0f0f0;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px #00d9ff;
+}
+
+.project-card h3 {
+  color: #00d9ff;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+}
+
+.project-card p {
+  color: #ddd;
+  font-size: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  background: #00d9ff;
+  color: #000;
+  font-weight: 600;
+}
