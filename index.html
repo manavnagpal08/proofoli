@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manav Nagpal | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 </head>
 <body>
-  <header class="hero-section">
-    <nav class="navbar">
-      <div class="logo">Manav Nagpal</div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">Manav Nagpal</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
       <div class="toggle-dark" onclick="toggleDarkMode()">🌙</div>
+    </div>
+  </nav>
 
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-
+  <!-- Hero Section -->
+  <header class="hero-section">
     <div class="hero-content" data-aos="fade-up">
       <h1>Turning Ideas into Impact 🚀</h1>
       <h2>Hi, I'm <span>Manav Nagpal</span></h2>
@@ -31,67 +33,35 @@
 
       <div class="hero-buttons">
         <a href="MANAV final  Resume (1).pdf" download class="btn">📄 View Resume</a>
-        <a href="#projects" class="btn btn-outline">💼 View Projects</a>
+        <a href="projects.html" class="btn btn-outline">💼 View Projects</a>
       </div>
     </div>
   </header>
 
-  <!-- About Me Section -->
-  <section id="about" class="section" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p>
-      I'm Manav Nagpal, a B.Tech Computer Science student (Data Science) at Alliance University, Bangalore. <br>
-      Passionate about AI, Machine Learning, and solving real-world problems with smart technology. <br>
-      I love building impactful tools, mentoring peers, and exploring the future of robotics and startups.
-    </p>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="section" data-aos="fade-up">
-    <h2>Skills & Tools</h2>
-    <ul class="skills-grid">
-      <li>Python</li>
-      <li>Machine Learning</li>
-      <li>Deep Learning</li>
-      <li>SQL</li>
-      <li>PHP</li>
-      <li>Java</li>
-      <li>Linux</li>
-      <li>Web Development</li>
-      <li>Android Studio</li>
-    </ul>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section" data-aos="fade-up">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Flip & Clip</h3>
-      <p>A content-sharing platform focused on safety and crime detection using data science.</p>
-    </div>
-    <div class="project">
-      <h3>Kraze</h3>
-      <p>Creative content sharing platform for social connection.</p>
-    </div>
-    <div class="project">
-      <h3>Hotel Management System</h3>
-      <p>Automates room booking and guest management using Python + SQL.</p>
-    </div>
-    <div class="project">
-      <h3>Social Media Analytics for Disaster Response</h3>
-      <p>Uses ML to extract useful insights from social media during disasters.</p>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <p>📧 manav.nagpal2005@gmail.com</p>
-    <p>📍 Bangalore, India</p>
-    <p>🔗 <a href="https://www.linkedin.com/in/manav-nagpal-83b935209/" target="_blank">LinkedIn Profile</a></p>
-  </section>
-
+  <!-- AOS + Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
+  <script>
+    // Animate On Scroll
+    AOS.init({ duration: 1200, once: true });
+
+    // Toggle Menu
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('open');
+    }
+
+    // Toggle Dark Mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    }
+
+    // Load dark mode preference
+    window.onload = function () {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    };
+  </script>
 </body>
 </html>
