@@ -10,29 +10,42 @@ function toggleMenu() {
   nav.classList.toggle('open');
 }
 
-// Dark Mode toggle
-function toggleDarkMode() {
-  const isLight = document.body.classList.toggle('light-mode'); // Toggle light mode
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+// Set Theme (light, dark, hacker)
+function setTheme(theme) {
+  document.body.className = ''; // Reset all theme classes
 
+  if (theme === 'light') {
+    document.body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+    updateToggleIcon('🌙');
+  } else if (theme === 'hacker') {
+    document.body.classList.add('hacker');
+    localStorage.setItem('theme', 'hacker');
+    updateToggleIcon('💻');
+  } else {
+    document.body.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+    updateToggleIcon('☀️');
+  }
+}
+
+// Manual toggle from the current icon
+function toggleDarkMode() {
+  const current = localStorage.getItem('theme');
+  if (current === 'light') setTheme('dark');
+  else setTheme('light');
+}
+
+// Change icon based on theme
+function updateToggleIcon(icon) {
   const toggleIcon = document.querySelector(".toggle-dark");
-  toggleIcon.textContent = isLight ? "🌙" : "☀️";
+  if (toggleIcon) toggleIcon.textContent = icon;
 }
 
 // Load saved theme and icon on page load
 window.onload = function () {
-  const savedTheme = localStorage.getItem('theme');
-  const toggleIcon = document.querySelector(".toggle-dark");
-
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-mode');
-    if (toggleIcon) toggleIcon.textContent = "🌙";
-  } else {
-    document.body.classList.remove('light-mode');
-    if (toggleIcon) toggleIcon.textContent = "☀️";
-  }
-
-  // Start typing animation after load
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  setTheme(savedTheme);
   startTypingAnimation();
 };
 
