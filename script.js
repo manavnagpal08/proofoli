@@ -12,14 +12,24 @@ function toggleMenu() {
 
 // Dark Mode toggle
 function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-  localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+  const isLight = document.body.classList.toggle('light-mode'); // Toggle light mode
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+  const toggleIcon = document.querySelector(".toggle-dark");
+  toggleIcon.textContent = isLight ? "🌙" : "☀️";
 }
 
-// Load saved theme on page load
+// Load saved theme and icon on page load
 window.onload = function () {
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
+  const savedTheme = localStorage.getItem('theme');
+  const toggleIcon = document.querySelector(".toggle-dark");
+
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+    if (toggleIcon) toggleIcon.textContent = "🌙";
+  } else {
+    document.body.classList.remove('light-mode');
+    if (toggleIcon) toggleIcon.textContent = "☀️";
   }
 
   // Start typing animation after load
