@@ -723,4 +723,40 @@ body.light-mode .back-to-top {
   transform: translateY(-4px);
   background: rgba(255, 255, 255, 0.7);
 }
+/* Terminal Hacker Mode Theme */
+body.hacker {
+  background: #0f0f0f;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+
+body.hacker a,
+body.hacker .btn,
+body.hacker .nav-links a {
+  color: #00ff00 !important;
+  border-color: #00ff00 !important;
+}
+
+body.hacker .btn:hover {
+  background: #00ff00;
+  color: #0f0f0f;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+body.hacker .project-card,
+body.hacker .cert-card,
+body.hacker .skills-grid li {
+  background: rgba(0, 255, 0, 0.05);
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+/* Theme Switcher Styling */
+.theme-switcher {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
 
