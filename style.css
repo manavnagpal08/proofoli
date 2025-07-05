@@ -699,4 +699,28 @@ body.light-mode .back-to-top {
   color: #fff;
 }
 
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.skills-grid li {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  font-weight: 500;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+}
+
+.skills-grid li:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.7);
+}
 
