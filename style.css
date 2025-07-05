@@ -759,4 +759,14 @@ body.hacker .skills-grid li {
   font-size: 1.2rem;
   cursor: pointer;
 }
+.footer a i {
+  margin-left: 8px;
+  color: var(--accent-2);
+  transition: 0.3s ease;
+}
+.footer a i:hover {
+  color: var(--accent);
+  transform: scale(1.2);
+}
+
 
