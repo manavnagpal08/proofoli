@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: manavnagpal/manavnagpal     # ← your GitHub repo name
+  repo: manavnagpal/proofoli    # ← your GitHub repo name
   branch: main
 
 media_folder: "uploads"
