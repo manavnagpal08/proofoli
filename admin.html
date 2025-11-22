@@ -5,52 +5,121 @@
   <title>Admin Panel – Add Project</title>
 
   <style>
-    body { font-family: Arial; max-width: 600px; margin: 40px auto; }
-    input, textarea { width: 100%; padding: 10px; margin-top: 10px; }
+    body { 
+      font-family: Arial; 
+      max-width: 700px; 
+      margin: 40px auto; 
+    }
+    input, textarea { 
+      width: 100%; 
+      padding: 10px; 
+      margin-top: 10px; 
+    }
     button {
-      width: 100%; padding: 12px; margin-top: 20px;
-      background: #4a4ae8; border: none; color: white;
-      cursor: pointer; font-size: 16px;
+      width: 100%; 
+      padding: 12px; 
+      margin-top: 20px;
+      background: #4a4ae8; 
+      border: none; 
+      color: white;
+      cursor: pointer; 
+      font-size: 16px;
     }
     button:hover { background: #3838d8; }
-    #status { margin-top: 20px; padding: 10px; background: #f1f1f1; }
+
+    #status { 
+      margin-top: 20px; 
+      padding: 10px; 
+      background: #f1f1f1; 
+    }
+
+    .project-card {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-top: 10px;
+      background: #fafafa;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      background: #e6e6e6;
+      margin-right: 5px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    .new-badge {
+      background: #ff4444;
+      color: white;
+      padding: 3px 8px;
+      font-size: 11px;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
   </style>
 </head>
 <body>
 
-<h2>Add Project</h2>
+<h2>➕ Add New Project</h2>
 
 <label>Project Name</label>
-<input id="name" placeholder="Example: Emotica – Sentiment Intelligence">
+<input id="name" placeholder="Project Name">
 
 <label>Description</label>
 <textarea id="desc" placeholder="Write description..."></textarea>
 
 <label>Tags (comma separated)</label>
-<input id="tags" placeholder="AI, ML, Python">
+<input id="tags" placeholder="AI, ML, App">
 
 <label>Logo File Name</label>
-<input id="logo" placeholder="emotica.png">
+<input id="logo" placeholder="logo.png">
 
 <label><input type="checkbox" id="new"> Mark as NEW</label>
 
-<button onclick="saveProject()">Save Project to GitHub</button>
+<button onclick="saveProject()">💾 Save Project to GitHub</button>
 
 <div id="status"></div>
 
+<hr style="margin:40px 0;">
+
+<h2>📂 All Projects</h2>
+<div id="projectList">Loading...</div>
+
 <script>
+async function loadProjects() {
+    const repo = "manavnagpal08/proofoli";
+    const url = `https://raw.githubusercontent.com/${repo}/main/projects.json`;
+
+    const res = await fetch(url);
+    const projects = await res.json();
+
+    let html = "";
+    projects.forEach(p => {
+        html += `
+        <div class="project-card">
+            <h3>${p.name} ${p.isNew ? "<span class='new-badge'>NEW</span>" : ""}</h3>
+            <p>${p.description}</p>
+            <strong>Tags:</strong> ${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+            <br><strong>Logo:</strong> ${p.logo}
+        </div>
+        `;
+    });
+
+    document.getElementById("projectList").innerHTML = html;
+}
+
 async function saveProject() {
     document.getElementById("status").innerHTML = "Saving...";
 
     const repo = "manavnagpal08/proofoli";
     const file = "projects.json";
 
-    // Load environment variable securely via Netlify
     const token = "{{process.env.GITHUB_TOKEN}}";
 
     const apiURL = `https://api.github.com/repos/${repo}/contents/${file}`;
 
-    // Load existing JSON
     const existing = await fetch(apiURL, {
         headers: { Authorization: `token ${token}` }
     }).then(r => r.json());
@@ -60,7 +129,6 @@ async function saveProject() {
         json = JSON.parse(atob(existing.content));
     }
 
-    // Create new project object
     const newProject = {
         name: document.getElementById("name").value,
         description: document.getElementById("desc").value,
@@ -71,7 +139,6 @@ async function saveProject() {
 
     json.push(newProject);
 
-    // Prepare commit
     const updatedContent = btoa(JSON.stringify(json, null, 2));
 
     const commit = {
@@ -80,7 +147,6 @@ async function saveProject() {
         sha: existing.sha
     };
 
-    // Save to GitHub
     await fetch(apiURL, {
         method: "PUT",
         headers: {
@@ -91,7 +157,11 @@ async function saveProject() {
     });
 
     document.getElementById("status").innerHTML = "✅ Project added successfully!";
+    
+    loadProjects();  // Refresh the list
 }
+
+loadProjects();
 </script>
 
 </body>
