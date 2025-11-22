@@ -1,2 +1,3 @@
-/admin/*
-  Content-Type: text/yaml
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: *
