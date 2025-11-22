@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel – Add Project</title>
+
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 40px auto; }
+    input, textarea { width: 100%; padding: 10px; margin-top: 10px; }
+    button {
+      width: 100%; padding: 12px; margin-top: 20px;
+      background: #4a4ae8; border: none; color: white;
+      cursor: pointer; font-size: 16px;
+    }
+    button:hover { background: #3838d8; }
+    #status { margin-top: 20px; padding: 10px; background: #f1f1f1; }
+  </style>
+</head>
+<body>
+
+<h2>Add Project</h2>
+
+<label>Project Name</label>
+<input id="name" placeholder="Example: Emotica – Sentiment Intelligence">
+
+<label>Description</label>
+<textarea id="desc" placeholder="Write description..."></textarea>
+
+<label>Tags (comma separated)</label>
+<input id="tags" placeholder="AI, ML, Python">
+
+<label>Logo File Name</label>
+<input id="logo" placeholder="emotica.png">
+
+<label><input type="checkbox" id="new"> Mark as NEW</label>
+
+<button onclick="saveProject()">Save Project to GitHub</button>
+
+<div id="status"></div>
+
+<script>
+async function saveProject() {
+    document.getElementById("status").innerHTML = "Saving...";
+
+    const repo = "manavnagpal08/proofoli";
+    const file = "projects.json";
+
+    // Load environment variable securely via Netlify
+    const token = "{{process.env.GITHUB_TOKEN}}";
+
+    const apiURL = `https://api.github.com/repos/${repo}/contents/${file}`;
+
+    // Load existing JSON
+    const existing = await fetch(apiURL, {
+        headers: { Authorization: `token ${token}` }
+    }).then(r => r.json());
+
+    let json = [];
+    if(existing.content){
+        json = JSON.parse(atob(existing.content));
+    }
+
+    // Create new project object
+    const newProject = {
+        name: document.getElementById("name").value,
+        description: document.getElementById("desc").value,
+        tags: document.getElementById("tags").value.split(",").map(t=>t.trim()),
+        logo: document.getElementById("logo").value,
+        isNew: document.getElementById("new").checked
+    };
+
+    json.push(newProject);
+
+    // Prepare commit
+    const updatedContent = btoa(JSON.stringify(json, null, 2));
+
+    const commit = {
+        message: "Added new project via admin panel",
+        content: updatedContent,
+        sha: existing.sha
+    };
+
+    // Save to GitHub
+    await fetch(apiURL, {
+        method: "PUT",
+        headers: {
+            Authorization: `token ${token}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(commit)
+    });
+
+    document.getElementById("status").innerHTML = "✅ Project added successfully!";
+}
+</script>
+
+</body>
+</html>
