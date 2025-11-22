@@ -1,16 +1,63 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Admin</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Admin</title>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 40px auto; }
+    input, textarea { width: 100%; padding: 10px; margin-top: 10px; }
+    button { padding: 12px; margin-top: 20px; width: 100%; background: #4a4ae8; color: white; border: none; cursor: pointer; }
+    button:hover { background: #3737d8; }
+    #box { white-space: pre; background: #f7f7f7; padding: 20px; margin-top: 20px; border-radius: 10px; }
+  </style>
+</head>
+<body>
 
-    <!-- Correct CMS script -->
-    <script src="https://unpkg.com/netlify-cms-app/dist/netlify-cms.js"></script>
-  </head>
+<h2>Add Project (Manual Admin Tool)</h2>
 
-  <body>
-    <script>
-      CMS.init();
-    </script>
-  </body>
+<label>Project Name</label>
+<input id="name" placeholder="Project title">
+
+<label>Description</label>
+<textarea id="desc" placeholder="Enter description"></textarea>
+
+<label>Tags (comma separated)</label>
+<input id="tags" placeholder="AI, ML, Python">
+
+<label>Logo file name</label>
+<input id="logo" placeholder="logo.png">
+
+<label>
+  <input type="checkbox" id="new"> Mark as NEW
+</label>
+
+<button onclick="make()">Generate HTML Code</button>
+
+<h3>Copy the HTML below into your projects page:</h3>
+<div id="box">Your generated project code will appear here...</div>
+
+<script>
+function make() {
+  let name = document.getElementById("name").value;
+  let desc = document.getElementById("desc").value;
+  let tags = document.getElementById("tags").value.split(",").map(t => t.trim());
+  let logo = document.getElementById("logo").value;
+  let isNew = document.getElementById("new").checked;
+
+  let tagHtml = tags.map(t => `<span class="tag">${t}</span>`).join(" ");
+
+  let html = `
+<div class="project-card">
+  <img src="${logo}" class="project-logo">
+  <h3>${name} ${isNew ? "<span class='new'>NEW</span>" : ""}</h3>
+  <p>${desc}</p>
+  ${tagHtml}
+</div>
+  `;
+
+  document.getElementById("box").innerText = html;
+}
+</script>
+
+</body>
 </html>
