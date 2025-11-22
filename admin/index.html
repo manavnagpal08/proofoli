@@ -4,25 +4,21 @@
     <meta charset="utf-8" />
     <title>Admin Dashboard</title>
 
-    <!-- Netlify CMS -->
-    <script src="https://unpkg.com/netlify-cms-app/dist/netlify-cms.js"></script>
-
-    <!-- GitHub OAuth -->
-    <script>
-      window.CMS_CONFIG = {
-        backend: {
-          name: "github",
-          repo: "manavnagpal/manavnagpal",
-          branch: "main",
-          authEndpoint: "https://manavnagpal.netlify.app/admin/callback"
-        }
-      };
-    </script>
+    <!-- Load Netlify CMS -->
+    <script src="https://unpkg.com/netlify-cms-app@latest/dist/netlify-cms.js"></script>
   </head>
 
   <body>
     <script>
-      NetlifyCmsApp.init(window.CMS_CONFIG);
+      NetlifyCmsApp.init({
+        config: {
+          backend: {
+            name: "github",
+            repo: "manavnagpal/manavnagpal",
+            branch: "main"
+          }
+        }
+      });
     </script>
   </body>
 </html>
