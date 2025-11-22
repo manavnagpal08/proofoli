@@ -1,0 +1,2 @@
+/admin/*
+  Content-Type: text/yaml
