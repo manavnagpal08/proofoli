@@ -3,12 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <title>Admin Dashboard</title>
-    <script src="https://unpkg.com/netlify-cms-app@latest/dist/netlify-cms.js"></script>
+
+    <!-- Only GitHub CMS - no Netlify Identity -->
+    <script src="https://unpkg.com/netlify-cms-app/dist/netlify-cms.js"></script>
   </head>
 
   <body>
     <script>
-      CMS.init();
+      CMS.init({
+        config: {
+          backend: {
+            name: "github",
+            repo: "manavnagpal08/proofoli",
+            branch: "main"
+          }
+        }
+      });
     </script>
   </body>
 </html>
