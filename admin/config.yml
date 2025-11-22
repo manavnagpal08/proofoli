@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: manavnagpal/manavnagpal     # ← your GitHub repo name
   branch: main
 
 media_folder: "uploads"
@@ -15,6 +16,6 @@ collections:
     fields:
       - { label: "Project Name", name: "name", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Tags", name: "tags", widget: "list" }
       - { label: "Logo", name: "logo", widget: "image" }
       - { label: "NEW Badge", name: "isNew", widget: "boolean", default: false }
