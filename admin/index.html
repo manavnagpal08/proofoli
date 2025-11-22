@@ -9,6 +9,7 @@
     button { padding: 12px; margin-top: 20px; width: 100%; background: #4a4ae8; color: white; border: none; cursor: pointer; }
     button:hover { background: #3737d8; }
     #box { white-space: pre; background: #f7f7f7; padding: 20px; margin-top: 20px; border-radius: 10px; }
+    .hint { font-size: 12px; color: #777; margin-bottom: 5px; }
   </style>
 </head>
 <body>
@@ -16,19 +17,23 @@
 <h2>Add Project (Manual Admin Tool)</h2>
 
 <label>Project Name</label>
-<input id="name" placeholder="Project title">
+<div class="hint">Example: Emotica – Sentiment Intelligence</div>
+<input id="name" placeholder="Project title" value="Emotica – Sentiment Intelligence">
 
 <label>Description</label>
-<textarea id="desc" placeholder="Enter description"></textarea>
+<div class="hint">Example: AI-powered platform that analyzes customer sentiment in real time.</div>
+<textarea id="desc" placeholder="Enter description">AI-powered platform that analyzes customer sentiment in real time.</textarea>
 
-<label>Tags (comma separated)</label>
-<input id="tags" placeholder="AI, ML, Python">
+<label>Tags</label>
+<div class="hint">Example: AI, NLP, Streamlit, Python</div>
+<input id="tags" value="AI, NLP, Streamlit, Python">
 
 <label>Logo file name</label>
-<input id="logo" placeholder="logo.png">
+<div class="hint">Example: emotica.png (place image inside your repo)</div>
+<input id="logo" placeholder="logo.png" value="emotica.png">
 
 <label>
-  <input type="checkbox" id="new"> Mark as NEW
+  <input type="checkbox" id="new" checked> Mark as NEW
 </label>
 
 <button onclick="make()">Generate HTML Code</button>
@@ -51,7 +56,7 @@ function make() {
   <img src="${logo}" class="project-logo">
   <h3>${name} ${isNew ? "<span class='new'>NEW</span>" : ""}</h3>
   <p>${desc}</p>
-  ${tagHtml}
+  <div class="tags">${tagHtml}</div>
 </div>
   `;
 
