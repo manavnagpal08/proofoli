@@ -2,65 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Project Admin</title>
+  <title>Admin Panel – Add Project</title>
+
   <style>
     body { font-family: Arial; max-width: 600px; margin: 40px auto; }
     input, textarea { width: 100%; padding: 10px; margin-top: 10px; }
-    button { padding: 12px; margin-top: 20px; width: 100%; background: #4a4ae8; color: white; border: none; cursor: pointer; }
-    button:hover { background: #3737d8; }
-    #box { white-space: pre; background: #f7f7f7; padding: 20px; margin-top: 20px; border-radius: 10px; }
-    .hint { font-size: 12px; color: #777; margin-bottom: 5px; }
+    button {
+      width: 100%; padding: 12px; margin-top: 20px;
+      background: #4a4ae8; border: none; color: white;
+      cursor: pointer; font-size: 16px;
+    }
+    button:hover { background: #3838d8; }
+    #status { margin-top: 20px; padding: 10px; background: #f1f1f1; }
   </style>
 </head>
 <body>
 
-<h2>Add Project (Manual Admin Tool)</h2>
+<h2>Add Project</h2>
 
 <label>Project Name</label>
-<div class="hint">Example: Emotica – Sentiment Intelligence</div>
-<input id="name" placeholder="Project title" value="Emotica – Sentiment Intelligence">
+<input id="name" placeholder="Example: Emotica – Sentiment Intelligence">
 
 <label>Description</label>
-<div class="hint">Example: AI-powered platform that analyzes customer sentiment in real time.</div>
-<textarea id="desc" placeholder="Enter description">AI-powered platform that analyzes customer sentiment in real time.</textarea>
+<textarea id="desc" placeholder="Write description..."></textarea>
 
-<label>Tags</label>
-<div class="hint">Example: AI, NLP, Streamlit, Python</div>
-<input id="tags" value="AI, NLP, Streamlit, Python">
+<label>Tags (comma separated)</label>
+<input id="tags" placeholder="AI, ML, Python">
 
-<label>Logo file name</label>
-<div class="hint">Example: emotica.png (place image inside your repo)</div>
-<input id="logo" placeholder="logo.png" value="emotica.png">
+<label>Logo File Name</label>
+<input id="logo" placeholder="emotica.png">
 
-<label>
-  <input type="checkbox" id="new" checked> Mark as NEW
-</label>
+<label><input type="checkbox" id="new"> Mark as NEW</label>
 
-<button onclick="make()">Generate HTML Code</button>
+<button onclick="saveProject()">Save Project to GitHub</button>
 
-<h3>Copy the HTML below into your projects page:</h3>
-<div id="box">Your generated project code will appear here...</div>
+<div id="status"></div>
 
 <script>
-function make() {
-  let name = document.getElementById("name").value;
-  let desc = document.getElementById("desc").value;
-  let tags = document.getElementById("tags").value.split(",").map(t => t.trim());
-  let logo = document.getElementById("logo").value;
-  let isNew = document.getElementById("new").checked;
+async function saveProject() {
+    document.getElementById("status").innerHTML = "Saving...";
 
-  let tagHtml = tags.map(t => `<span class="tag">${t}</span>`).join(" ");
+    const repo = "manavnagpal08/proofoli";
+    const file = "projects.json";
 
-  let html = `
-<div class="project-card">
-  <img src="${logo}" class="project-logo">
-  <h3>${name} ${isNew ? "<span class='new'>NEW</span>" : ""}</h3>
-  <p>${desc}</p>
-  <div class="tags">${tagHtml}</div>
-</div>
-  `;
+    // Load environment variable securely via Netlify
+    const token = "{{process.env.GITHUB_TOKEN}}";
 
-  document.getElementById("box").innerText = html;
+    const apiURL = `https://api.github.com/repos/${repo}/contents/${file}`;
+
+    // Load existing JSON
+    const existing = await fetch(apiURL, {
+        headers: { Authorization: `token ${token}` }
+    }).then(r => r.json());
+
+    let json = [];
+    if(existing.content){
+        json = JSON.parse(atob(existing.content));
+    }
+
+    // Create new project object
+    const newProject = {
+        name: document.getElementById("name").value,
+        description: document.getElementById("desc").value,
+        tags: document.getElementById("tags").value.split(",").map(t=>t.trim()),
+        logo: document.getElementById("logo").value,
+        isNew: document.getElementById("new").checked
+    };
+
+    json.push(newProject);
+
+    // Prepare commit
+    const updatedContent = btoa(JSON.stringify(json, null, 2));
+
+    const commit = {
+        message: "Added new project via admin panel",
+        content: updatedContent,
+        sha: existing.sha
+    };
+
+    // Save to GitHub
+    await fetch(apiURL, {
+        method: "PUT",
+        headers: {
+            Authorization: `token ${token}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(commit)
+    });
+
+    document.getElementById("status").innerHTML = "✅ Project added successfully!";
 }
 </script>
 
