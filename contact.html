@@ -4,80 +4,299 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Manav Nagpal</title>
-
-  <!-- Fonts + AOS + CSS -->
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Load AOS for scroll effects (if needed) -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- Fonts: Inter is the preferred modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Internal Styling for Custom Effects (Gradients, Neomorphism, Layout) -->
+  <style>
+    /* 1. Base Setup and Variables */
+    :root {
+      --accent-color: #00d9ff; /* Default for Hacker Theme */
+      --secondary-accent: #6f00ff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Deep dark background */
+      color: #f0f0f0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* 2. Theme Switching Logic (CSS Variables) */
+    .theme-lavender {
+      --accent-color: #a766ff;
+      --secondary-accent: #ff66a7;
+    }
+    .theme-hacker {
+      --accent-color: #00d9ff;
+      --secondary-accent: #6f00ff;
+    }
+    
+    /* 3. Custom Visual Elements */
+
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent-color), var(--secondary-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+
+    /* Logo Glow Effect */
+    .glow-text {
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.2), 0 0 10px rgba(0, 217, 255, 0.4);
+      transition: text-shadow 0.3s;
+    }
+
+    /* Navbar Link Active State */
+    .nav-links .active {
+      color: var(--accent-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 2px;
+    }
+
+    /* 4. Contact Card Neomorphism */
+    .contact-container {
+      max-width: 600px;
+      width: 90%;
+      padding: 40px;
+      border-radius: 1.5rem; /* rounded-3xl */
+      /* Deep Shadow/Neomorphism effect for a floating card */
+      background: #1a1a1a; /* Slightly lighter dark background for the card */
+      box-shadow: 
+          10px 10px 30px rgba(0, 0, 0, 0.5), /* Stronger outer shadow (dark) */
+          -10px -10px 30px rgba(45, 45, 45, 0.1); /* Subtle inner shadow (light) */
+      transition: all 0.3s ease-in-out;
+    }
+
+    .contact-container:hover {
+        transform: translateY(-5px); /* Subtle lift */
+        box-shadow: 
+            15px 15px 40px rgba(0, 0, 0, 0.6),
+            -15px -15px 40px rgba(45, 45, 45, 0.15);
+    }
+
+    /* 5. Form Input Inset Styling */
+    .form-group input,
+    .form-group textarea {
+        padding: 1rem 1.5rem;
+        border: none;
+        outline: none;
+        background: #282828; /* Input background */
+        border-radius: 0.75rem; /* rounded-xl */
+        font-size: 1rem;
+        color: #f0f0f0;
+        resize: vertical; /* Allow vertical resizing for textarea */
+        
+        /* Subtle inner shadow for an 'inset' look (Neomorphism) */
+        box-shadow: inset 3px 3px 6px #101010, inset -3px -3px 6px #303030;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border: 1px solid var(--accent-color); /* Highlight color on focus */
+        box-shadow: inset 1px 1px 3px #101010, inset -1px -1px 3px #303030; /* Less inset on focus */
+    }
+
+    /* 6. Button Styling */
+    .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        
+        /* Dynamic Gradient based on theme */
+        background: linear-gradient(90deg, var(--accent-color), var(--secondary-accent));
+        color: #fff;
+        box-shadow: 0 5px 20px rgba(0, 217, 255, 0.4); 
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 217, 255, 0.6); 
+        opacity: 0.95;
+    }
+
+    .btn:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 10px rgba(0, 217, 255, 0.4);
+    }
+    
+    /* 7. Wave Color Adjustment */
+    .footer .waves path {
+        fill: var(--accent-color); 
+        fill-opacity: 0.1; /* Very subtle light wave */
+    }
+    
+    /* 8. Hamburger Menu Responsive Styles (Tailwind handles most, but needed for toggle) */
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px; /* Height of the navbar */
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #1a1a1a;
+        z-index: 10;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .nav-links a, .nav-links span {
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 1px solid #282828;
+      }
+    }
+    
+  </style>
 </head>
 
-<!-- IMPORTANT: this makes sure new design applies ONLY to this page -->
-<body class="contact-page">
+<!-- Applied Tailwind classes for layout and dark mode defaults -->
+<body class="theme-hacker">
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo glow-text">Manav Nagpal</div>
+  <nav class="navbar flex justify-between items-center px-6 py-4 bg-gray-900 shadow-lg sticky top-0 z-50">
+    <div class="logo text-2xl font-bold glow-text">Manav Nagpal</div>
 
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="hamburger md:hidden" onclick="toggleMenu()">☰</div>
 
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="skills.html">Skills</a>
-      <a href="projects.html">Projects</a>
-      <a href="certificates.html">Certifications</a>
+    <div class="nav-links hidden md:flex space-x-6 items-center text-lg font-medium" id="navLinks">
+      <a href="index.html" class="hover:text-cyan-400 transition duration-300">Home</a>
+      <a href="about.html" class="hover:text-cyan-400 transition duration-300">About</a>
+      <a href="skills.html" class="hover:text-cyan-400 transition duration-300">Skills</a>
+      <a href="projects.html" class="hover:text-cyan-400 transition duration-300">Projects</a>
+      <a href="certificates.html" class="hover:text-cyan-400 transition duration-300">Certifications</a>
       <a class="active" href="contact.html">Contact</a>
-      <span onclick="setTheme('lavender')">💜</span>
-      <span onclick="setTheme('hacker')">💻</span>
+      <span class="text-xl cursor-pointer hover:scale-110 transition duration-200" onclick="setTheme('lavender')">💜</span>
+      <span class="text-xl cursor-pointer hover:scale-110 transition duration-200" onclick="setTheme('hacker')">💻</span>
     </div>
   </nav>
 
   <!-- Contact Section -->
-  <section class="section contact-section">
+  <section class="section contact-section flex-grow flex items-center justify-center py-20 px-4">
 
+    <!-- Neomorphic Card Container -->
     <div class="contact-container" data-aos="fade-up">
-      <h2 class="gradient-text">Let's Get in Touch</h2>
-      <p class="sub-text">
+      <h2 class="gradient-text text-4xl font-extrabold mb-3 sm:text-5xl">Let's Get in Touch</h2>
+      <p class="sub-text text-gray-400 font-light mb-8 text-lg">
         I’d love to hear from you. Whether you have a question or just want to say hi, drop a message!
       </p>
 
-      <form class="contact-form" action="https://formspree.io/f/xnnvryna" method="POST">
+      <form class="contact-form flex flex-col gap-6" action="https://formspree.io/f/xnnvryna" method="POST">
 
         <div class="form-group">
-          <input type="email" name="email" required />
-          <label>Your Email</label>
+          <!-- Using placeholder attribute to mimic the floating label effect combined with custom CSS -->
+          <input type="email" name="email" placeholder=" " required class="w-full text-white appearance-none">
+          <label class="absolute left-6 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none transition-all duration-300 transform-gpu" for="email">Your Email</label>
         </div>
 
         <div class="form-group">
-          <textarea name="message" rows="5" required></textarea>
-          <label>Your Message</label>
+          <!-- Using placeholder attribute to mimic the floating label effect combined with custom CSS -->
+          <textarea name="message" rows="5" placeholder=" " required class="w-full text-white appearance-none min-h-[150px]"></textarea>
+          <label class="absolute left-6 top-6 text-gray-500 pointer-events-none transition-all duration-300 transform-gpu" for="message">Your Message</label>
         </div>
 
-        <button type="submit" class="btn">Send Message</button>
+        <button type="submit" class="btn self-start mt-6 hover:shadow-2xl transition duration-300">
+          Send Message
+        </button>
       </form>
     </div>
 
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="wave-container">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#00d9ff" fill-opacity="0.2"
+  <footer class="footer relative bg-gray-900 pt-0 mt-10">
+    <div class="wave-container absolute top-[-5px] w-full h-[5px]">
+      <svg class="waves w-full h-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill-opacity="0.2"
           d="M0,96L60,122.7C120,149,240,203,360,197.3C480,192,600,128,720,96C840,64,960,64,1080,101.3C1200,139,1320,213,1380,250.7L1440,288V320H0Z"></path>
       </svg>
     </div>
 
-    <div class="footer-content">
-      <p>© 2025 Manav Nagpal | 
-        <a href="mailto:manav.nagpal2005@gmail.com">manav.nagpal2005@gmail.com</a>
+    <div class="footer-content text-center py-6 text-gray-500 text-sm">
+      <p class="mt-4">© 2025 Manav Nagpal | 
+        <a href="mailto:manav.nagpal2005@gmail.com" class="text-cyan-400 hover:text-white transition duration-200">manav.nagpal2005@gmail.com</a>
       </p>
     </div>
   </footer>
 
   <!-- Scripts -->
+  <script>
+    // Theme switching logic
+    function setTheme(themeName) {
+      document.body.className = themeName === 'lavender' ? 'theme-lavender' : 'theme-hacker';
+    }
+
+    // Floating Label implementation (pure JS since Tailwind doesn't handle this easily)
+    document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+        const label = input.nextElementSibling;
+
+        // Function to update label position
+        const updateLabel = () => {
+            if (input.value || document.activeElement === input) {
+                // Input has content or is focused: move label up
+                label.classList.add('top-4', 'text-xs', 'bg-[#1a1a1a]', 'px-1', 'rounded-sm', 'text-opacity-100');
+                label.classList.remove('top-1/2', 'text-base', 'bg-transparent', 'text-opacity-70');
+            } else {
+                // Input is empty and not focused: move label to center
+                label.classList.add('top-1/2', 'text-base', 'bg-transparent', 'text-opacity-70');
+                label.classList.remove('top-4', 'text-xs', 'bg-[#1a1a1a]', 'px-1', 'rounded-sm', 'text-opacity-100');
+            }
+        };
+
+        input.addEventListener('input', updateLabel);
+        input.addEventListener('focus', updateLabel);
+        input.addEventListener('blur', updateLabel);
+        
+        // Initial call to set the correct state on load
+        updateLabel();
+    });
+    
+    // Navbar Toggling for Mobile
+    function toggleMenu() {
+        const navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('open');
+    }
+
+    // Initialize AOS
+    window.onload = function() {
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+    };
+  </script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
 
 </body>
 </html>
