@@ -22,8 +22,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
-/* --- CONTACT CONTAINER --- */
-.contact-container {
+/* --- CONTACT PAGE ONLY --- */
+.contact-page .contact-container {
   width: 100%;
   max-width: 750px;
   margin: 80px auto;
@@ -35,33 +35,31 @@ a {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* --- Titles --- */
-.contact-container h2 {
+.contact-page .contact-container h2 {
   font-size: 36px;
   text-align: center;
   margin-bottom: 10px;
 }
 
-.sub-text {
+.contact-page .sub-text {
   text-align: center;
   font-size: 17px;
   margin-bottom: 40px;
   opacity: 0.9;
 }
 
-/* --- Form Styles --- */
-.contact-form {
+.contact-page .contact-form {
   width: 100%;
 }
 
-.form-group {
+.contact-page .form-group {
   position: relative;
   width: 100%;
   margin-bottom: 28px;
 }
 
-.form-group input,
-.form-group textarea {
+.contact-page .form-group input,
+.contact-page .form-group textarea {
   width: 100%;
   padding: 16px 18px;
   font-size: 16px;
@@ -73,13 +71,13 @@ a {
   transition: all 0.25s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.contact-page .form-group input:focus,
+.contact-page .form-group textarea:focus {
   border-color: #00e1ff;
   background: rgba(0, 225, 255, 0.08);
 }
 
-.form-group label {
+.contact-page .form-group label {
   position: absolute;
   top: -10px;
   left: 15px;
@@ -91,11 +89,11 @@ a {
   font-weight: 600;
 }
 
-/* --- Improved Send Button --- */
-.btn {
-  width: 100%;                  /* Full-width */
-  padding: 16px 20px;           /* Larger button */
-  font-size: 18px;              /* Bigger text */
+/* --- Improved Send Button (Only on contact page) --- */
+.contact-page .btn {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 18px;
   border-radius: 10px;
   font-weight: 600;
   color: #000;
@@ -106,10 +104,11 @@ a {
   letter-spacing: 0.4px;
 }
 
-.btn:hover {
+.contact-page .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 18px #00eaff, 0 0 28px #00eaff70;
 }
+
 
 /* === Navbar === */
 .navbar {
