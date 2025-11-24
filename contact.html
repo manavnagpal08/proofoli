@@ -14,7 +14,7 @@
   <!-- Fonts: Inter is the preferred modern font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Internal Styling for Custom Effects (Gradients, Neomorphism, Layout) -->
+  <!-- Internal Styling for Custom Effects (Gradients, Neomorphism, Layout, Animations) -->
   <style>
     /* 1. Base Setup and Variables */
     :root {
@@ -42,7 +42,52 @@
       --secondary-accent: #6f00ff;
     }
     
-    /* 3. Custom Visual Elements */
+    /* 3. Custom Visual Elements & KEYFRAME ANIMATIONS */
+
+    /* Logo Glow Animation */
+    @keyframes glow-pulse {
+      0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2), 0 0 10px rgba(var(--rgb-accent), 0.4); }
+      50% { text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px rgba(var(--rgb-accent), 0.6); }
+      100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2), 0 0 10px rgba(var(--rgb-accent), 0.4); }
+    }
+    
+    .glow-text {
+      --rgb-accent: 0, 217, 255; /* Default RGB for hacker theme */
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.2), 0 0 10px rgba(var(--rgb-accent), 0.4);
+      transition: text-shadow 0.3s;
+      animation: glow-pulse 3s infinite alternate; /* New breathing animation */
+    }
+    .theme-lavender .glow-text {
+        --rgb-accent: 167, 102, 255;
+    }
+    .glow-text:hover {
+        animation-duration: 1.5s; /* Speed up on hover */
+    }
+
+    /* Input Focus Pulse Animation */
+    @keyframes input-shadow-pulse {
+      0% { box-shadow: inset 1px 1px 3px #101010, inset -1px -1px 3px #303030; }
+      50% { box-shadow: inset 1px 1px 5px var(--accent-color), inset -1px -1px 5px var(--accent-color); }
+      100% { box-shadow: inset 1px 1px 3px #101010, inset -1px -1px 3px #303030; }
+    }
+
+    /* Confetti Animation */
+    @keyframes fall {
+        0% { opacity: 0; transform: translate(0, -50px) rotate(0deg); }
+        10% { opacity: 1; }
+        100% { opacity: 0; transform: translate(var(--x-end), var(--y-end)) rotate(720deg); }
+    }
+    .confetti-piece {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: var(--confetti-color);
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+        animation: fall 1.5s ease-out forwards;
+        z-index: 100;
+    }
 
     /* Gradient Text */
     .gradient-text {
@@ -51,12 +96,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
-    }
-
-    /* Logo Glow Effect */
-    .glow-text {
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.2), 0 0 10px rgba(0, 217, 255, 0.4);
-      transition: text-shadow 0.3s;
     }
 
     /* Navbar Link Active State */
@@ -88,6 +127,9 @@
     }
 
     /* 5. Form Input Inset Styling */
+    .form-group {
+        position: relative; /* Needed for label positioning */
+    }
     .form-group input,
     .form-group textarea {
         padding: 1rem 1.5rem;
@@ -97,7 +139,7 @@
         border-radius: 0.75rem; /* rounded-xl */
         font-size: 1rem;
         color: #f0f0f0;
-        resize: vertical; /* Allow vertical resizing for textarea */
+        resize: vertical; 
         
         /* Subtle inner shadow for an 'inset' look (Neomorphism) */
         box-shadow: inset 3px 3px 6px #101010, inset -3px -3px 6px #303030;
@@ -107,7 +149,7 @@
     .form-group input:focus,
     .form-group textarea:focus {
         border: 1px solid var(--accent-color); /* Highlight color on focus */
-        box-shadow: inset 1px 1px 3px #101010, inset -1px -1px 3px #303030; /* Less inset on focus */
+        animation: input-shadow-pulse 1.5s infinite alternate; /* Pulse on focus */
     }
 
     /* 6. Button Styling */
@@ -134,9 +176,10 @@
         opacity: 0.95;
     }
 
+    /* Enhanced Active/Press State */
     .btn:active {
-        transform: translateY(1px);
-        box-shadow: 0 2px 10px rgba(0, 217, 255, 0.4);
+        transform: translateY(3px); /* Deeper press */
+        box-shadow: 0 0 5px rgba(0, 217, 255, 0.4); /* Shadow disappears/shrinks */
     }
     
     /* 7. Wave Color Adjustment */
@@ -206,27 +249,27 @@
   <section class="section contact-section flex-grow flex items-center justify-center py-20 px-4">
 
     <!-- Neomorphic Card Container -->
-    <div class="contact-container" data-aos="fade-up">
+    <div class="contact-container relative" data-aos="fade-up">
       <h2 class="gradient-text text-4xl font-extrabold mb-3 sm:text-5xl">Let's Get in Touch</h2>
       <p class="sub-text text-gray-400 font-light mb-8 text-lg">
         I’d love to hear from you. Whether you have a question or just want to say hi, drop a message!
       </p>
 
-      <form class="contact-form flex flex-col gap-6" action="https://formspree.io/f/xnnvryna" method="POST">
+      <form class="contact-form flex flex-col gap-6" action="https://formspree.io/f/xnnvryna" method="POST" id="contactForm">
 
         <div class="form-group">
-          <!-- Using placeholder attribute to mimic the floating label effect combined with custom CSS -->
-          <input type="email" name="email" placeholder=" " required class="w-full text-white appearance-none">
-          <label class="absolute left-6 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none transition-all duration-300 transform-gpu" for="email">Your Email</label>
+          <!-- The 'placeholder' attribute is used here to hook the floating label JS -->
+          <input type="email" name="email" id="emailInput" placeholder=" " required class="w-full text-white appearance-none">
+          <label class="absolute left-6 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none transition-all duration-300 transform-gpu" for="emailInput">Your Email</label>
         </div>
 
         <div class="form-group">
-          <!-- Using placeholder attribute to mimic the floating label effect combined with custom CSS -->
-          <textarea name="message" rows="5" placeholder=" " required class="w-full text-white appearance-none min-h-[150px]"></textarea>
-          <label class="absolute left-6 top-6 text-gray-500 pointer-events-none transition-all duration-300 transform-gpu" for="message">Your Message</label>
+          <!-- The 'placeholder' attribute is used here to hook the floating label JS -->
+          <textarea name="message" id="messageInput" rows="5" placeholder=" " required class="w-full text-white appearance-none min-h-[150px]"></textarea>
+          <label class="absolute left-6 top-6 text-gray-500 pointer-events-none transition-all duration-300 transform-gpu" for="messageInput">Your Message</label>
         </div>
 
-        <button type="submit" class="btn self-start mt-6 hover:shadow-2xl transition duration-300">
+        <button type="submit" class="btn self-start mt-6 hover:shadow-2xl transition duration-300" id="submitBtn">
           Send Message
         </button>
       </form>
@@ -257,12 +300,13 @@
       document.body.className = themeName === 'lavender' ? 'theme-lavender' : 'theme-hacker';
     }
 
-    // Floating Label implementation (pure JS since Tailwind doesn't handle this easily)
+    // Floating Label implementation
     document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
         const label = input.nextElementSibling;
 
         // Function to update label position
         const updateLabel = () => {
+            // Check for value OR if the element is currently focused
             if (input.value || document.activeElement === input) {
                 // Input has content or is focused: move label up
                 label.classList.add('top-4', 'text-xs', 'bg-[#1a1a1a]', 'px-1', 'rounded-sm', 'text-opacity-100');
@@ -287,6 +331,59 @@
         const navLinks = document.getElementById('navLinks');
         navLinks.classList.toggle('open');
     }
+
+    // CONFETTI ANIMATION LOGIC
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // This function creates and animates the confetti pieces
+    function launchConfetti(originElement) {
+        const rect = originElement.getBoundingClientRect();
+        const colors = ['#00d9ff', '#6f00ff', '#f0f0f0', '#ff66a7', '#a766ff'];
+        const container = document.querySelector('.contact-container');
+        
+        // Calculate the relative position of the button center inside the contact-container
+        const btnCenterX = rect.left + rect.width / 2 - container.getBoundingClientRect().left;
+        const btnCenterY = rect.top + rect.height / 2 - container.getBoundingClientRect().top;
+        
+        // Ensure container is positioned relatively for absolute confetti
+        container.style.position = 'relative';
+
+        for (let i = 0; i < 30; i++) {
+            const piece = document.createElement('div');
+            piece.classList.add('confetti-piece');
+
+            // Apply random color from the color palette
+            piece.style.setProperty('--confetti-color', colors[Math.floor(Math.random() * colors.length)]);
+
+            // Random end position for a burst effect
+            const randomX = (Math.random() - 0.5) * 200; // -100px to +100px
+            const randomY = (Math.random() - 0.5) * 200 - 100; // -150px to +50px (mostly upwards)
+            
+            piece.style.setProperty('--x-end', `${randomX}px`);
+            piece.style.setProperty('--y-end', `${randomY}px`);
+
+            // Set the initial position to the center of the button, relative to the container
+            piece.style.left = `${btnCenterX}px`;
+            piece.style.top = `${btnCenterY}px`;
+            
+            container.appendChild(piece);
+
+            // Clean up the piece after the animation finishes
+            setTimeout(() => {
+                piece.remove();
+            }, 1500); // Matches the animation duration
+        }
+    }
+
+    // Attach event listener to the form submission
+    form.addEventListener('submit', function(e) {
+        // Only launch confetti if the form is valid (browser handles validation via 'required')
+        if (form.checkValidity()) {
+            launchConfetti(submitBtn);
+        }
+        // Formspree handles the actual submission and redirection, so no need to prevent default
+    });
 
     // Initialize AOS
     window.onload = function() {
