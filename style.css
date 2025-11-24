@@ -22,6 +22,94 @@ a {
   text-decoration: none;
   color: inherit;
 }
+/* --- CONTACT CONTAINER --- */
+.contact-container {
+  width: 100%;
+  max-width: 750px;
+  margin: 80px auto;
+  padding: 50px 40px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Titles --- */
+.contact-container h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sub-text {
+  text-align: center;
+  font-size: 17px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+/* --- Form Styles --- */
+.contact-form {
+  width: 100%;
+}
+
+.form-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #00e1ff;
+  background: rgba(0, 225, 255, 0.08);
+}
+
+.form-group label {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  padding: 2px 8px;
+  font-size: 13px;
+  background: #00c8ff;
+  border-radius: 6px;
+  color: #000;
+  font-weight: 600;
+}
+
+/* --- Improved Send Button --- */
+.btn {
+  width: 100%;                  /* Full-width */
+  padding: 16px 20px;           /* Larger button */
+  font-size: 18px;              /* Bigger text */
+  border-radius: 10px;
+  font-weight: 600;
+  color: #000;
+  background: #00eaff;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+  letter-spacing: 0.4px;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px #00eaff, 0 0 28px #00eaff70;
+}
 
 /* === Navbar === */
 .navbar {
