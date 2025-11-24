@@ -4,46 +4,69 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Manav Nagpal</title>
+
+  <!-- Fonts + AOS + CSS -->
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
+
 <body>
+
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">Manav Nagpal</div>
+    <div class="logo glow-text">Manav Nagpal</div>
+
     <div class="hamburger" onclick="toggleMenu()">☰</div>
+
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="skills.html">Skills</a>
       <a href="projects.html">Projects</a>
       <a href="certificates.html">Certifications</a>
-      <a href="contact.html">Contact</a>
+      <a class="active" href="contact.html">Contact</a>
       <span onclick="setTheme('lavender')">💜</span>
       <span onclick="setTheme('hacker')">💻</span>
-     
     </div>
   </nav>
 
   <!-- Contact Section -->
-  <section class="section contact-section" data-aos="fade-up">
-    <div class="contact-container glass-box">
-      <h2 class="gradient-text">Let's Get in Touch</h2>
-      <p class="sub-text">I’d love to hear from you. Whether you have a question or just want to say hi, drop a message!</p>
+  <section class="section contact-section">
 
-      <form class="contact-form" action="https://formspree.io/f/xnnvryna" method="POST">
+    <div class="contact-wrapper" data-aos="fade-up">
+
+      <!-- Left: Heading -->
+      <div class="contact-left glass-box">
+        <h2 class="gradient-text big-title">Let’s Talk</h2>
+        <p class="sub-text">
+          Have a question? Want to collaborate?  
+          Just say hello — I respond fast 🚀
+        </p>
+
+        <div class="contact-info">
+          <p><strong>Email:</strong> <a href="mailto:manav.nagpal2005@gmail.com">manav.nagpal2005@gmail.com</a></p>
+          <p><strong>Location:</strong> India</p>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <form class="contact-form glass-box" action="https://formspree.io/f/xnnvryna" method="POST">
+
         <div class="form-group">
           <input type="email" name="email" required />
           <label>Your Email</label>
         </div>
 
         <div class="form-group">
-          <textarea name="message" rows="5" required></textarea>
+          <textarea name="message" required></textarea>
           <label>Your Message</label>
         </div>
 
-        <button type="submit" class="btn">Send Message</button>
+        <button class="btn neon-btn" type="submit">
+          Send Message ✨
+        </button>
+
       </form>
     </div>
   </section>
@@ -52,11 +75,17 @@
   <footer class="footer">
     <div class="wave-container">
       <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#00d9ff" fill-opacity="0.2" d="M0,96L60,122.7C120,149,240,203,360,197.3C480,192,600,128,720,96C840,64,960,64,1080,101.3C1200,139,1320,213,1380,250.7L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        <path fill="#00d9ff" fill-opacity="0.2"
+          d="M0,96L60,122.7C120,149,240,203,360,197.3C480,192,600,128,720,96C840,64,960,64,1080,101.3C1200,139,1320,213,1380,250.7L1440,288V320H0Z"></path>
       </svg>
     </div>
+
     <div class="footer-content">
-      <p>© 2025 Manav Nagpal | <a href="mailto:manav.nagpal2005@gmail.com">manav.nagpal2005@gmail.com</a></p>
+      <p>© 2025 Manav Nagpal | 
+        <a href="mailto:manav.nagpal2005@gmail.com">
+          manav.nagpal2005@gmail.com
+        </a>
+      </p>
     </div>
   </footer>
 
