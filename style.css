@@ -857,3 +857,108 @@ body.hacker .skills-grid li {
 }
 
 
+
+/* === New Animation & Effects === */
+
+/* Particles Background */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Behind all content */
+  pointer-events: none; /* Let clicks pass through */
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00d9ff, #a855f7);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00d9ff;
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(0, 217, 255, 0.5);
+  background-color: rgba(0, 217, 255, 0.05);
+}
+
+.cursor-dot, .cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 10000;
+  pointer-events: none;
+  transition: transform 0.15s ease-out;
+}
+
+/* Enhancing Hover Effects for Cards */
+.project-card, .cert-card, .glass-box {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.project-card:hover, .cert-card:hover, .glass-box:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 217, 255, 0.2);
+  border-color: rgba(0, 217, 255, 0.4);
+}
+
+/* Add a subtle shine effect to skills */
+.skills-grid li {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.skills-grid li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.skills-grid li:hover::before {
+  left: 100%;
+}
+
+/* Initial state for skill bars before animation */
+.skill-bar .fill {
+  width: 0; /* Will be updated via JS */
+  transition: width 1.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+
+/* Hide default cursor to show only custom cursor on devices with a pointing device */
+@media (pointer: fine) {
+  body, a, button, input, select, textarea, .btn {
+    cursor: none !important;
+  }
+}
+
+/* Hide custom cursor elements on touch devices */
+@media (pointer: coarse), (hover: none) {
+  .cursor-dot, .cursor-outline {
+    display: none !important;
+  }
+}
