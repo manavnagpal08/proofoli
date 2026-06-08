@@ -1,189 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Manav Nagpal</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<section class="section" data-aos="fade-up">
+  <h2>My Projects</h2>
 
-  <style>
-    .new-badge {
-      background: #ff3b3b;
-      color: white;
-      font-size: 12px;
-      padding: 3px 7px;
-      border-radius: 5px;
-      margin-left: 10px;
-      font-weight: 600;
-    }
-  </style>
+  <div class="project-grid">
 
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">Manav Nagpal</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="skills.html">Skills</a>
-      <a href="projects.html">Projects</a>
-      <a href="certificates.html">Certifications</a>
-      <a href="contact.html">Contact</a>
-      <span onclick="setTheme('lavender')">💜</span>
-      <span onclick="setTheme('hacker')">💻</span>
+    <!-- Screener Pro -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="screener.png" alt="Screener Pro Logo" class="project-logo" />
+      <h3>Screener Pro <span class="new-badge">NEW</span></h3>
+      <p>
+        An AI-powered resume screening app that analyzes resumes, extracts skills,
+        scores candidates, and provides smart analytics with email integration.
+      </p>
+      <span class="tag">Python</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">AI</span>
+      <span class="tag">NLP</span>
     </div>
-  </nav>
 
-  <!-- Projects Section -->
-  <section class="section" data-aos="fade-up">
-    <h2>My Projects</h2>
-    <div class="project-grid">
-
-      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="fc.png" alt="Flip & Clip Logo" class="project-logo" />
-        <h3>Flip & Clip</h3>
-        <p>A data-driven platform for secure content sharing and real-time crime detection using AI & Python.</p>
-        <span class="tag">Python</span>
-        <span class="tag">Data Science</span>
-        <span class="tag">Security</span>
-      </div>
-
-      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="kr.png" alt="Kraze Logo" class="project-logo" />
-        <h3>Kraze</h3>
-        <p>A creative social platform that allows users to post, engage, and discover digital art and ideas.</p>
-        <span class="tag">UI/UX</span>
-        <span class="tag">Frontend</span>
-        <span class="tag">Python</span>
-      </div>
-
-      <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-        <img src="ht.png" alt="Hotel Management System Logo" class="project-logo" />
-        <h3>Hotel Management System</h3>
-        <p>A complete hotel software to handle room bookings, check-ins, check-outs and billing with SQL + Python.</p>
-        <span class="tag">Python</span>
-        <span class="tag">SQL</span>
-        <span class="tag">Desktop App</span>
-      </div>
-
-      <div class="project-card" data-aos="fade-up" data-aos-delay="400">
-        <img src="ds.png" alt="Disaster Analytics Logo" class="project-logo" />
-        <h3>Disaster Analytics (Social Media)</h3>
-        <p>ML model to analyze live tweets during disasters to assist emergency response teams with actionable insights.</p>
-        <span class="tag">ML</span>
-        <span class="tag">NLP</span>
-        <span class="tag">Python</span>
-      </div>
-
-      <div class="project-card" data-aos="fade-up" data-aos-delay="500">
-        <img src="blooms.png" alt="Blooms App Logo" class="project-logo" />
-        <h3>Blooms App</h3>
-        <p>A machine learning-powered mobile app that detects plant diseases by analyzing leaf images using Python models and Android frontend.</p>
-        <span class="tag">Python</span>
-        <span class="tag">Java</span>
-        <span class="tag">ML</span>
-        <span class="tag">Android Studio</span>
-      </div>
-
-      <!-- Screener Pro (NEW) -->
-      <div class="project-card" data-aos="fade-up" data-aos-delay="600">
-        <img src="screener.png" alt="Screener Pro Logo" class="project-logo" />
-        <h3>Screener Pro <span class="new-badge">NEW</span></h3>
-        <p>An AI-powered resume screening app that analyzes resumes, extracts skills, scores candidates, and provides smart analytics with email integration.</p>
-        <span class="tag">Python</span>
-        <span class="tag">Streamlit</span>
-        <span class="tag">AI</span>
-        <span class="tag">NLP</span>
-      </div>
-
-      <!-- Emotica (NEW) -->
-      <div class="project-card" data-aos="fade-up" data-aos-delay="700">
-        <img src="emotica.png" alt="Emotica Logo" class="project-logo" />
-        <h3>Emotica <span class="new-badge">NEW</span></h3>
-        <p>
-          An AI-powered sentiment intelligence platform that analyzes customer reviews,
-          detects fake feedback, and visualizes product insights through interactive dashboards.
-        </p>
-        <span class="tag">AI</span>
-        <span class="tag">NLP</span>
-        <span class="tag">Python</span>
-        <span class="tag">ML</span>
-        <span class="tag">Dashboard</span>
-      </div>
-
-      <!-- EnviroTech Company App (AI) -->
-<div class="project-card" data-aos="fade-up" data-aos-delay="800">
-  <img src="envlogo.png" alt="EnviroTech App Logo" class="project-logo" />
-  <h3>EnviroTech Company App <span class="new-badge">NEW</span></h3>
-  <p>
-    An AI-driven business automation platform for an EnviroTech company that
-    predicts material demand, detects sales anomalies, analyzes customer issues,
-    and provides smart insights to improve operational efficiency and profits.
-  </p>
-  <span class="tag">Flutter</span>
-  <span class="tag">Firebase</span>
-  <span class="tag">AI Analytics</span>
-  <span class="tag">Prediction</span>
-</div>
-
-<!-- Sangam Tejara Namkeen App (AI) -->
-<div class="project-card" data-aos="fade-up" data-aos-delay="900">
-  <img src="logo.png" alt="Sangam App Logo" class="project-logo" />
-  <h3>Sangam Tejara Namkeen App <span class="new-badge">NEW</span></h3>
-  <p>
-    A smart factory-to-sales AI system for a namkeen brand that forecasts demand,
-    optimizes raw material usage, predicts stock shortages, and analyzes sales
-    trends to maximize profit and reduce waste.
-  </p>
-  <span class="tag">Flutter</span>
-  <span class="tag">AI Forecasting</span>
-  <span class="tag">Inventory AI</span>
-  <span class="tag">Analytics</span>
-</div>
-
-<!-- SRP OMS (AI) -->
-<div class="project-card" data-aos="fade-up" data-aos-delay="1000">
-  <img src="srp.png" alt="SRP OMS Logo" class="project-logo" />
-  <h3>SRP OMS – Smart Order Management <span class="new-badge">NEW</span></h3>
-  <p>
-    An AI-powered Order Management System that predicts order volumes,
-    recommends restocking, detects delayed orders, and provides intelligent
-    business dashboards for decision-making.
-  </p>
-  <span class="tag">AI</span>
-  <span class="tag">Order Prediction</span>
-  <span class="tag">Flutter</span>
-  <span class="tag">Dashboard</span>
-</div>
-
-<!-- Shivam Box Bill Book (AI) -->
-<div class="project-card" data-aos="fade-up" data-aos-delay="1100">
-  <img src="shivamboxlogo.png" alt="Shivam Box Bill Book Logo" class="project-logo" />
-  <h3>Shivam Box – Smart Bill Book <span class="new-badge">NEW</span></h3>
-  <p>
-    An AI-enabled billing app that automatically categorizes products,
-    detects billing anomalies, predicts daily sales, and provides
-    intelligent GST-ready financial insights with thermal printing support.
-  </p>
-  <span class="tag">AI</span>
-  <span class="tag">Billing Intelligence</span>
-  <span class="tag">Flutter</span>
-  <span class="tag">GST</span>
-</div>
-
-
+    <!-- TruthShield AI -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="truthshield.png" alt="TruthShield AI Logo" class="project-logo" />
+      <h3>TruthShield AI <span class="new-badge">NEW</span></h3>
+      <p>
+        AI-powered misinformation detection platform developed during IBM AI for Sustainability Internship.
+        Uses RAG and LLMs to verify WhatsApp forwarded messages and classify content using trusted sources.
+      </p>
+      <span class="tag">RAG</span>
+      <span class="tag">LLM</span>
+      <span class="tag">IBM</span>
+      <span class="tag">AI</span>
     </div>
-  </section>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-  <script src="script.js"></script>
+    <!-- Rakshatantra AI -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+      <img src="rakshatantra.png" alt="Rakshatantra AI Logo" class="project-logo" />
+      <h3>Rakshatantra AI <span class="new-badge">NEW</span></h3>
+      <p>
+        AI-powered industrial safety monitoring system that detects fatigue,
+        unsafe posture, missing safety gear, and workplace hazards in real time.
+      </p>
+      <span class="tag">Computer Vision</span>
+      <span class="tag">OpenCV</span>
+      <span class="tag">AI</span>
+      <span class="tag">Safety</span>
+    </div>
+
+    <!-- ClearCrowd AI -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+      <img src="clearcrowd.png" alt="ClearCrowd AI Logo" class="project-logo" />
+      <h3>ClearCrowd AI <span class="new-badge">NEW</span></h3>
+      <p>
+        AI-powered crowd intelligence platform built on Microsoft Azure that provides
+        real-time crowd density insights and map-based visualizations.
+      </p>
+      <span class="tag">Azure</span>
+      <span class="tag">Cloud</span>
+      <span class="tag">Computer Vision</span>
+      <span class="tag">AI</span>
+    </div>
+
+    <!-- Emotica -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+      <img src="emotica.png" alt="Emotica Logo" class="project-logo" />
+      <h3>Emotica <span class="new-badge">NEW</span></h3>
+      <p>
+        AI-powered sentiment intelligence platform that analyzes customer reviews,
+        detects fake feedback, and visualizes product insights.
+      </p>
+      <span class="tag">AI</span>
+      <span class="tag">NLP</span>
+      <span class="tag">Python</span>
+      <span class="tag">ML</span>
+    </div>
+
+    <!-- Disaster Analytics -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+      <img src="ds.png" alt="Disaster Analytics Logo" class="project-logo" />
+      <h3>Disaster Analytics (Social Media)</h3>
+      <p>
+        ML model to analyze live tweets during disasters and assist emergency
+        response teams with actionable insights.
+      </p>
+      <span class="tag">ML</span>
+      <span class="tag">NLP</span>
+      <span class="tag">Python</span>
+    </div>
+
+    <!-- Blooms App -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="700">
+      <img src="blooms.png" alt="Blooms App Logo" class="project-logo" />
+      <h3>Blooms App</h3>
+      <p>
+        Machine learning-powered mobile application that detects plant diseases
+        from leaf images using AI models.
+      </p>
+      <span class="tag">Python</span>
+      <span class="tag">Java</span>
+      <span class="tag">ML</span>
+      <span class="tag">Android</span>
+    </div>
+    <!-- EnviroTech Company App -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="800">
+      <img src="envlogo.png" alt="EnviroTech App Logo" class="project-logo" />
+      <h3>EnviroTech Company App</h3>
+      <p>
+        AI-driven business automation platform that predicts material demand,
+        detects sales anomalies, analyzes customer issues, and provides smart insights.
+      </p>
+      <span class="tag">Flutter</span>
+      <span class="tag">Firebase</span>
+      <span class="tag">AI Analytics</span>
+      <span class="tag">Prediction</span>
+    </div>
+
+    <!-- Sangam Tejara Namkeen App -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="900">
+      <img src="logo.png" alt="Sangam App Logo" class="project-logo" />
+      <h3>Sangam Tejara Namkeen App</h3>
+      <p>
+        Smart factory-to-sales AI system that forecasts demand,
+        optimizes raw material usage, predicts stock shortages,
+        and analyzes sales trends.
+      </p>
+      <span class="tag">Flutter</span>
+      <span class="tag">AI Forecasting</span>
+      <span class="tag">Inventory AI</span>
+      <span class="tag">Analytics</span>
+    </div>
+
+    <!-- SRP OMS -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="1000">
+      <img src="srp.png" alt="SRP OMS Logo" class="project-logo" />
+      <h3>SRP OMS – Smart Order Management</h3>
+      <p>
+        AI-powered Order Management System that predicts order volumes,
+        recommends restocking, detects delayed orders,
+        and provides intelligent dashboards.
+      </p>
+      <span class="tag">AI</span>
+      <span class="tag">Order Prediction</span>
+      <span class="tag">Flutter</span>
+      <span class="tag">Dashboard</span>
+    </div>
+
+    <!-- Shivam Box -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="1100">
+      <img src="shivamboxlogo.png" alt="Shivam Box Logo" class="project-logo" />
+      <h3>Shivam Box – Smart Bill Book</h3>
+      <p>
+        AI-enabled billing app that categorizes products,
+        detects billing anomalies, predicts sales,
+        and provides GST-ready insights.
+      </p>
+      <span class="tag">AI</span>
+      <span class="tag">Billing Intelligence</span>
+      <span class="tag">Flutter</span>
+      <span class="tag">GST</span>
+    </div>
+
+    <!-- Hotel Management System -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="1200">
+      <img src="ht.png" alt="Hotel Management System Logo" class="project-logo" />
+      <h3>Hotel Management System</h3>
+      <p>
+        Complete hotel software to manage room bookings,
+        check-ins, check-outs, customer records,
+        and billing using Python and SQL.
+      </p>
+      <span class="tag">Python</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Desktop App</span>
+    </div>
+
+    <!-- Kraze -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="1300">
+      <img src="kr.png" alt="Kraze Logo" class="project-logo" />
+      <h3>Kraze</h3>
+      <p>
+        A creative social platform that allows users
+        to post, engage, and discover digital art,
+        content, and innovative ideas.
+      </p>
+      <span class="tag">UI/UX</span>
+      <span class="tag">Frontend</span>
+      <span class="tag">Python</span>
+    </div>
+
+    <!-- Flip & Clip -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="1400">
+      <img src="fc.png" alt="Flip & Clip Logo" class="project-logo" />
+      <h3>Flip & Clip</h3>
+      <p>
+        A data-driven platform for secure content sharing
+        and real-time crime detection using AI and Python.
+      </p>
+      <span class="tag">Python</span>
+      <span class="tag">Data Science</span>
+      <span class="tag">Security</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<script src="script.js"></script>
 </body>
 </html>
