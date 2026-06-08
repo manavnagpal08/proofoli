@@ -1,90 +1,121 @@
-// Animate On Scroll Init
+// ===============================
+// AOS Animation
+// ===============================
 AOS.init({
   duration: 1200,
   once: true
 });
 
-// Toggle hamburger menu (mobile)
+// ===============================
+// Mobile Menu Toggle
+// ===============================
 function toggleMenu() {
-  const nav = document.getElementById('navLinks');
-  nav.classList.toggle('open');
+  const nav = document.getElementById("navLinks");
+  nav.classList.toggle("open");
 }
 
-// Set Theme (light, dark, hacker)
+// ===============================
+// Theme Management
+// ===============================
 function setTheme(theme) {
-  document.body.className = ''; // Reset all theme classes
+  document.body.classList.remove("dark-mode", "hacker");
 
-  if (theme === 'light') {
-    document.body.classList.add('light-mode');
-    localStorage.setItem('theme', 'light');
-    updateToggleIcon('🌙');
-  } else if (theme === 'hacker') {
-    document.body.classList.add('hacker');
-    localStorage.setItem('theme', 'hacker');
-    updateToggleIcon('💻');
+  if (theme === "hacker") {
+    document.body.classList.add("hacker");
+    localStorage.setItem("theme", "hacker");
+    updateToggleIcon("💻");
   } else {
-    document.body.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-    updateToggleIcon('☀️');
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+    updateToggleIcon("🌙");
   }
 }
 
-// Manual toggle from the current icon
+// ===============================
+// Dark/Hacker Toggle
+// ===============================
 function toggleDarkMode() {
-  const current = localStorage.getItem('theme');
-  if (current === 'light') setTheme('dark');
-  else setTheme('light');
+  const currentTheme = localStorage.getItem("theme");
+
+  if (currentTheme === "hacker") {
+    setTheme("dark");
+  } else {
+    setTheme("hacker");
+  }
 }
 
-// Change icon based on theme
+// ===============================
+// Update Theme Icon
+// ===============================
 function updateToggleIcon(icon) {
   const toggleIcon = document.querySelector(".toggle-dark");
-  if (toggleIcon) toggleIcon.textContent = icon;
+
+  if (toggleIcon) {
+    toggleIcon.textContent = icon;
+  }
 }
 
-// Load saved theme and icon on page load
+// ===============================
+// Load Theme On Startup
+// ===============================
 window.onload = function () {
-  const savedTheme = localStorage.getItem('theme') || 'light';
+  const savedTheme = localStorage.getItem("theme") || "dark";
+
   setTheme(savedTheme);
   startTypingAnimation();
 };
 
-// Typing Text Effect
+// ===============================
+// Typing Animation
+// ===============================
 function startTypingAnimation() {
   const phrases = [
     "Turning Ideas into Impact 🚀",
-    "Building for the future with AI 💻",
+    "Building for the Future with AI 💻",
     "Exploring Innovation ✨"
   ];
+
   const el = document.getElementById("typed-text");
-  let i = 0, j = 0;
-  let isDeleting = false;
+
+  if (!el) return;
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
 
   function type() {
-    const current = phrases[i];
-    if (!isDeleting) {
-      el.textContent = current.substring(0, j++);
+    const currentPhrase = phrases[phraseIndex];
+
+    if (!deleting) {
+      el.textContent = currentPhrase.substring(0, charIndex++);
     } else {
-      el.textContent = current.substring(0, j--);
+      el.textContent = currentPhrase.substring(0, charIndex--);
     }
 
-    if (j === current.length + 1) isDeleting = true;
-    if (j === 0) {
-      isDeleting = false;
-      i = (i + 1) % phrases.length;
+    if (charIndex === currentPhrase.length + 1) {
+      deleting = true;
+      setTimeout(type, 1500);
+      return;
     }
 
-    setTimeout(type, isDeleting ? 50 : 100);
+    if (charIndex === 0 && deleting) {
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+
+    setTimeout(type, deleting ? 50 : 100);
   }
 
-  if (el) type();
+  type();
 }
 
-// Show/hide back-to-top button
-window.onscroll = () => {
+// ===============================
+// Back To Top Visibility
+// ===============================
+window.addEventListener("scroll", () => {
   if (window.scrollY > 200) {
-    document.body.classList.add('scrolled');
+    document.body.classList.add("scrolled");
   } else {
-    document.body.classList.remove('scrolled');
+    document.body.classList.remove("scrolled");
   }
-};
+});
