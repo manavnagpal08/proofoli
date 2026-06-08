@@ -1,6 +1,46 @@
-<section class="section" data-aos="fade-up">
-  <h2>My Projects</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Manav Nagpal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
+  <style>
+    .new-badge {
+      background: #ff3b3b;
+      color: white;
+      font-size: 12px;
+      padding: 3px 7px;
+      border-radius: 5px;
+      margin-left: 10px;
+      font-weight: 600;
+    }
+  </style>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Manav Nagpal</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="certificates.html">Certifications</a>
+      <a href="contact.html">Contact</a>
+      <span onclick="setTheme('lavender')">💜</span>
+      <span onclick="setTheme('hacker')">💻</span>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+  <section class="section" data-aos="fade-up">
+    <h2>My Projects</h2>
   <div class="project-grid">
 
     <!-- Screener Pro -->
@@ -200,14 +240,15 @@
     </div>
 
   </div>
-</section>
 
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+    </div>
+  </section>
 
-<script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>
